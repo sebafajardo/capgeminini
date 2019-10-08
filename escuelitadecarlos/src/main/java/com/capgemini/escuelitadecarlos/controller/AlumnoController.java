@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.capgemini.escuelitadecarlos.interfac.AlumnoRepository;
 import com.capgemini.escuelitadecarlos.model.Alumno;
-import com.capgemini.form.model.Choripan;
 
 @Controller
 public class AlumnoController {
@@ -23,16 +22,16 @@ public class AlumnoController {
 	@GetMapping ("/alumno")
 	public String alumnoForm(Model model) {
         model.addAttribute("alumno", new Alumno());
-        return "alumno";
+        return "formalumno";
         
     }
 	@PostMapping("/costanera")
-    public String choriSubmit(@ModelAttribute Choripan choripan) {
-    	repository.save(choripan);	
+    public String choriSubmit(@ModelAttribute Alumno alumno) {
+    	alumnoRepository.save(alumno);	
     	log.info("Customers found with findAll():");
 		log.info("-------------------------------");
-		for (Choripan chori : repository.findAll()) {
-			log.info(chori.toString());
+		for (Alumno alum : alumnoRepository.findAll()) {
+			log.info(alum.toString());
 		}
 		log.info("");
         return "result";
