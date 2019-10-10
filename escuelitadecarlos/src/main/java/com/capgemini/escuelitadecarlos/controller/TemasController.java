@@ -10,33 +10,27 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.capgemini.escuelitadecarlos.interfac.AlumnoRepository;
+import com.capgemini.escuelitadecarlos.interfac.TemasRepository;
 import com.capgemini.escuelitadecarlos.model.Alumno;
+import com.capgemini.escuelitadecarlos.model.Temas;
+import com.capgemini.escuelitadecarlos.model.TemasListContainer;
 
 @Controller
-public class AlumnoController {
-	private static final Logger log = LoggerFactory.getLogger(AlumnoController.class);
-	
+public class TemasController {
 	@Autowired
-	private AlumnoRepository alumnoRepository;
+	private TemasRepository repository;
 	
-	@GetMapping ("/alumno")
+	@GetMapping ("/temas")
 	public String alumnoForm(Model model) {
 		
-        model.addAttribute("alumno", new Alumno());
-		
-        return "formalumno";
+        model.addAttribute("t", repository.findAll());
+        return "temas";
         
     }
-	@PostMapping("/costanera")
-    public String choriSubmit(@ModelAttribute Alumno alumno) {
-    	alumnoRepository.save(alumno);	
-    	log.info("Customers found with findAll():");
-		log.info("-------------------------------");
-		for (Alumno alum : alumnoRepository.findAll()) {
-			log.info(alum.toString());
-		}
-		log.info("");
-        return "result";
+	@PostMapping("/temasresult")
+    public String choriSubmit(@ModelAttribute("t") TemasListContainer temas) {
+    //	repository.save(alumno);	
+        return "temasresult";
     }
 	
 

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Alumno {
@@ -12,9 +13,18 @@ public class Alumno {
 	private long id;
 	private String name;
 	private String apellido;
-	private int Dni;
+	private int dni;
 	private String telefono;
 	private String mail;
+	private String checked;
+	
+
+	public String getChecked() {
+		return checked;
+	}
+	public void setChecked(String checked) {
+		this.checked = checked;
+	}
 	public long getId() {
 		return id;
 	}
@@ -34,10 +44,10 @@ public class Alumno {
 		this.apellido = apellido;
 	}
 	public int getDni() {
-		return Dni;
+		return dni;
 	}
 	public void setDni(int dni) {
-		Dni = dni;
+		this.dni = dni;
 	}
 	public String getTelefono() {
 		return telefono;

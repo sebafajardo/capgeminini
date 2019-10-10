@@ -5,12 +5,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Form</h1>
+	<h1>Alta de alumnos</h1>
+	
+
+      
 	<form action="#" th:action="@{/costanera}" th:object="${alumno}" method="post">
-    	<p>Id: <input type="text" th:field="*{id}" /></p>
-        <p>Nombre: <input type="text" th:field="*{name}" /></p>
-        <p>Apellido: <input type="text" th:field="*{apellido}" /></p>
+		<p>Nombre: <input type="email" th:field="*{name}" /></p>
+        <p>Apellido: <input type="email" th:field="*{apellido}" /></p>
+        <p>Mail: <input type="email" th:field="*{mail}" /></p>
+        <p>DNI: <input type="number" th:field="*{dni}" /></p>
+        <p>Telefono: <input type="number" th:field="*{telefono}" /></p>      
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
+   </tr>
 	</body>
 </html>
